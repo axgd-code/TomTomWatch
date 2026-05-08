@@ -49,12 +49,12 @@ public class UsbConnection
     
     private UsbDevice                       device;
     private UsbInterface                    iface;
-    private DeviceType                      deviceType;
+    DeviceType                              deviceType;
     private byte                            txMessageCounter;
     private byte                            txPrevMessageCounter;
     
-    private boolean                         isError;
-    private String                          lastError;
+    boolean                                 isError;
+    String                                  lastError;
     
     private byte[]                          rxBuffer;
     private int                             rxLength;
@@ -72,6 +72,11 @@ public class UsbConnection
         isError             =false;
         lastError           ="";
     }
+
+    protected UsbServices getUsbServices() throws UsbException
+    {
+        return UsbHostManager.getUsbServices();
+    }
     
     /**
      * Try to connect to a TomTom Watch. If successful the variable device
@@ -80,14 +85,23 @@ public class UsbConnection
      */
     public void connect()
     {
+        isError     =false;
+        lastError   ="Ok";
+        performConnect();
+        if (isError)
+        {
+            DebugLogger.error(lastError);
+        }
+    }
+
+    protected void performConnect()
+    {
         UsbServices         services;
         UsbConfiguration    configuration;
 
-        isError     =false;
-        lastError   ="Ok";
         try
         {
-            services = UsbHostManager.getUsbServices();
+            services = getUsbServices();
 
             if (device==null)
             {
@@ -125,7 +139,7 @@ public class UsbConnection
             DebugLogger.error(lastError);
         }
 
-        if (device!=null)
+        if (!isError && device!=null)
         {
             configuration       = device.getActiveUsbConfiguration();
             iface               = configuration.getUsbInterface((byte) 0);
@@ -147,14 +161,10 @@ public class UsbConnection
                 lastError   ="USB Error: "+e.getMessage();
             }
         } 
-        else
+        else if (!isError)
         {
             isError     =true;
             lastError   ="No valid USB device found";            
-        }
-        if (isError)
-        {
-            DebugLogger.error(lastError);
         }
     }
     
