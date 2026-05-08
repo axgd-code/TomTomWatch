@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.TimeZone;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 import net.studioblueplanet.generics.ToolBox;
 
 
@@ -25,6 +26,8 @@ import net.studioblueplanet.generics.ToolBox;
  */
 public class UsbInterface extends WatchInterface
 {
+    private static boolean macOsPermissionWarningShown = false;
+
     // This enum defines the file access mode: for reading or for writing
     public enum FileMode
     {
@@ -520,10 +523,42 @@ public class UsbInterface extends WatchInterface
         }
         else
         {
+            showMacOsPermissionWarningIfNeeded(connection.lastError);
             error=true;
         }
         
         return error;
+    }
+
+    /**
+     * On macOS, libusb requires administrator privileges to detach IOKit drivers
+     * and claim USB interfaces. Show a one-time dialog with instructions when
+     * this is detected.
+     * @param errorMessage The USB error message from the last connection attempt
+     */
+    private void showMacOsPermissionWarningIfNeeded(String errorMessage)
+    {
+        String os = System.getProperty("os.name", "").toLowerCase();
+        if (os.contains("mac") && !macOsPermissionWarningShown &&
+            errorMessage != null && errorMessage.toLowerCase().contains("access denied"))
+        {
+            macOsPermissionWarningShown = true;
+            String jarPath = UsbInterface.class.getProtectionDomain()
+                .getCodeSource().getLocation().getPath();
+            String message =
+                "USB Access Denied\n\n" +
+                "macOS requires administrator privileges to access USB devices\n" +
+                "with this application.\n\n" +
+                "Please restart TomTomWatch from a Terminal with:\n" +
+                "  sudo java -jar " + jarPath + "\n\n" +
+                "The application will keep retrying in the background.";
+            JOptionPane.showMessageDialog(
+                null,
+                message,
+                "USB Access Denied",
+                JOptionPane.WARNING_MESSAGE
+            );
+        }
     }
     
     /**
