@@ -5,9 +5,9 @@
  */
 package net.studioblueplanet.ttbin;
 
-import hirondelle.date4j.DateTime;
 import java.io.Writer;
 import java.util.Locale;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -17,11 +17,14 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import net.studioblueplanet.logger.DebugLogger;
+
 import org.w3c.dom.Attr;
 import org.w3c.dom.Comment;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import hirondelle.date4j.DateTime;
+import net.studioblueplanet.logger.DebugLogger;
 
 /**
  *
