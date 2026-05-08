@@ -73,6 +73,13 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>local-lib</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+    </repositories>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
