@@ -5,22 +5,26 @@
  */
 package net.studioblueplanet.tomtomwatch;
 
-import net.studioblueplanet.generics.ToolBox;
-import net.studioblueplanet.usb.WatchInterface;
 import javax.swing.JOptionPane;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
-import static org.junit.Assert.*;
 import org.mockito.ArgumentCaptor;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import net.studioblueplanet.generics.ToolBox;
+import net.studioblueplanet.usb.WatchInterface;
 
 
 /**

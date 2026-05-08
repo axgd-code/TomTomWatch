@@ -5,32 +5,31 @@
 
 package net.studioblueplanet.ttbin;
 
-import net.studioblueplanet.logger.DebugLogger;
-import net.studioblueplanet.settings.ConfigSettings;
-
 import java.io.IOException;
-import java.io.Writer;
 import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
 import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
 import org.w3c.dom.Comment;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import java.util.List;
-import java.util.Iterator;
-import java.util.Locale;
-
 import hirondelle.date4j.DateTime;
+import net.studioblueplanet.logger.DebugLogger;
+import net.studioblueplanet.settings.ConfigSettings;
 
 
 

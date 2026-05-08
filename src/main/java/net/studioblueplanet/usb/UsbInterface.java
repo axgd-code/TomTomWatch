@@ -6,15 +6,15 @@
 
 package net.studioblueplanet.usb;
 
-import net.studioblueplanet.logger.DebugLogger;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.TimeZone;
+
+import javax.swing.JOptionPane;
 
 import hirondelle.date4j.DateTime;
-import java.io.UnsupportedEncodingException;
-import java.util.TimeZone;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.swing.JOptionPane;
 import net.studioblueplanet.generics.ToolBox;
+import net.studioblueplanet.logger.DebugLogger;
 
 
 /**

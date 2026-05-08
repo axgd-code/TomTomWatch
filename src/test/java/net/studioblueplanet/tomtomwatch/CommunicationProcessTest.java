@@ -5,36 +5,45 @@
  */
 package net.studioblueplanet.tomtomwatch;
 
-import net.studioblueplanet.usb.UsbFile;
-import net.studioblueplanet.usb.WatchInterface.FileType;
-import net.studioblueplanet.usb.WatchInterface;
-import net.studioblueplanet.generics.DirectExecutor;
-import net.studioblueplanet.generics.ToolBox;
-import net.studioblueplanet.ttbin.TomTomReader;
-import net.studioblueplanet.ttbin.Activity;
-import net.studioblueplanet.ttbin.TtbinHeader;
-import net.studioblueplanet.settings.ConfigSettings;
-import hirondelle.date4j.DateTime;
-import java.io.IOException;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import net.studioblueplanet.logger.DebugLogger;
-
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.Ignore;
-import static org.junit.Assert.*;
 import org.mockito.ArgumentCaptor;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
+import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.invocation.InvocationOnMock;
+
+import hirondelle.date4j.DateTime;
+import net.studioblueplanet.generics.DirectExecutor;
+import net.studioblueplanet.generics.ToolBox;
+import net.studioblueplanet.logger.DebugLogger;
+import net.studioblueplanet.settings.ConfigSettings;
+import net.studioblueplanet.ttbin.Activity;
+import net.studioblueplanet.ttbin.TomTomReader;
+import net.studioblueplanet.ttbin.TtbinHeader;
+import net.studioblueplanet.usb.UsbFile;
+import net.studioblueplanet.usb.WatchInterface;
+import net.studioblueplanet.usb.WatchInterface.FileType;
 
 
 /**

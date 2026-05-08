@@ -8,23 +8,22 @@ package net.studioblueplanet.usb;
 
 import java.util.List;
 
-import net.studioblueplanet.logger.DebugLogger;
-
+import javax.usb.UsbClaimException;
+import javax.usb.UsbConfiguration;
 import javax.usb.UsbDevice;
-import javax.usb.UsbException;
+import javax.usb.UsbDeviceDescriptor;
 import javax.usb.UsbDisconnectedException;
-import javax.usb.UsbNotClaimedException;
+import javax.usb.UsbEndpoint;
+import javax.usb.UsbException;
 import javax.usb.UsbHostManager;
 import javax.usb.UsbHub;
-import javax.usb.UsbServices;
-import javax.usb.UsbPort;
-import javax.usb.UsbConfiguration;
 import javax.usb.UsbInterface;
-import javax.usb.UsbEndpoint;
-import javax.usb.UsbClaimException;
+import javax.usb.UsbNotClaimedException;
 import javax.usb.UsbPipe;
-import javax.usb.UsbDeviceDescriptor;
-import javax.usb.UsbInterfacePolicy;
+import javax.usb.UsbPort;
+import javax.usb.UsbServices;
+
+import net.studioblueplanet.logger.DebugLogger;
 
 /**
  * This class represents the connection to the USB watch. It contains functionality
