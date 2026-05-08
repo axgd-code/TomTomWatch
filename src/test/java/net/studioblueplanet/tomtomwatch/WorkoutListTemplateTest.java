@@ -30,8 +30,8 @@ import net.studioblueplanet.tomtomwatch.WorkoutListItem.ActivityType;
 import net.studioblueplanet.tomtomwatch.Workout.IntensityLevel;
 
 import org.mockito.ArgumentCaptor;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
