@@ -231,6 +231,9 @@
                     <generateGitPropertiesFilename>
                         ${project.build.outputDirectory}/build.properties
                     </generateGitPropertiesFilename>
+                    <gitDescribe>
+                        <skip>true</skip>
+                    </gitDescribe>
                 </configuration>
                 <executions>
                     <execution>
