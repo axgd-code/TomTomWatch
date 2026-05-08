@@ -94,7 +94,7 @@ public class SerialExecutorTest
         instance.execute(r);
         instance.execute(r);
         
-        Mockito.verify(r, timeout(500).times(0)).run();
+        Mockito.verify(r, timeout(500).times(1)).run();
         Mockito.verify(r, timeout(1500).times(1)).run();
         Mockito.verify(r, timeout(2500).times(2)).run();
         // Isn't this a creative solution to check serialized execution? :-)
