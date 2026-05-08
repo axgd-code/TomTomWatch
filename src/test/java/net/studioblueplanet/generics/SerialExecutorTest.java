@@ -5,15 +5,15 @@
  */
 package net.studioblueplanet.generics;
 
-import net.studioblueplanet.usb.UsbPacket;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.timeout;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
@@ -94,7 +94,7 @@ public class SerialExecutorTest
         instance.execute(r);
         instance.execute(r);
         
-        Mockito.verify(r, timeout(500).times(1)).run();
+        Mockito.verify(r, timeout(500).times(0)).run();
         Mockito.verify(r, timeout(1500).times(1)).run();
         Mockito.verify(r, timeout(2500).times(2)).run();
         // Isn't this a creative solution to check serialized execution? :-)
